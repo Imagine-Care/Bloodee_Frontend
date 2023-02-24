@@ -1,1 +1,36 @@
-<p>storage works!</p>
+<div style="height: 100vh; overflow-y:hidden;">
+  <div fxFlex="100%" fxLayoutAlign="center center" fxLayoutAlign.xs="center center" fxLayout="row wrap"
+    fxLayoutGap="8px grid">
+    <div fxFlex="70%" fxFlex.xs="80%">
+      <mat-card fxFlex="100%">
+        <mat-card-content>
+          <mat-tab-group fxFlex="100%" style="height: 65vh;" dynamicHeight>
+            <mat-tab label="Coupon">
+
+              <!-- coupon list use card-->
+              <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="8px grid"
+                style="margin-top: 10px;">
+                <div *ngFor="let coupon of coupons; let i = index" fxFlex="33.3%" fxFlex.xs="100%">
+
+                  <mat-card fxFlex="100%">
+                    <mat-card-content>
+                      <!-- a big text show how much discount and smaller for what use -->
+                      <h2>
+                        {{coupon.discount}}
+                      </h2>
+                      <h4>
+                        {{coupon.name}}
+                      </h4>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+            </mat-tab>
+            <mat-tab label="blood"> Blood Donate </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

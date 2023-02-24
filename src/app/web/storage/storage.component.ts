@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./storage.component.scss']
 })
 export class StorageComponent implements OnInit {
+  coupons: any = [{
+    id: 1,
+    discount : "50 Baht",
+    name: "Coupon 1",
+    descrition: "Lorem ",
+  },
 
+  ]
   constructor() { }
 
   ngOnInit(): void {

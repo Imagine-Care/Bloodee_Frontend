@@ -1,0 +1,9 @@
+.span-select {
+  font-size: 2em;
+  line-height: 2em;
+  // on mobile smaller size
+  @media (max-width: 767px) {
+    font-size: 1em;
+    line-height: 1em;
+  }
+}

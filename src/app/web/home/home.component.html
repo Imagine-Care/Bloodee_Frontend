@@ -1,19 +1,35 @@
 <div style="height: 100vh; overflow-y:hidden;">
   <div fxFlex="100%" fxLayoutAlign="center start" fxLayoutAlign.xs="center center" fxLayout="row wrap"
     fxLayoutGap="8px grid">
+
     <div fxFlex="100%" fxLayoutAlign="center center">
-      <img src="assets/images/Logo.png" fxFlex="20%" fxFlex.xs="80%">
+      <div fxFlex="40%" fxFlex.xs="20%">
+
+      </div>
+      <div fxFlex="20%" fxFlex.xs="60%">
+        <img src="assets/images/Logo.png" fxFlex="100%">
+      </div>
+      <div fxFlex="40%" fxFlex.xs="20%" fxLayoutAlign="center start">
+        <img src="assets/images/Logo.png" fxFlex="30%" fxFlex.xs="100%">
+      </div>
     </div>
     <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="9px grid">
-      <div fxFlex="50%">
-        <button mat-button mat-raised-button class="primary" style="background-color: #FFC107; color: white;"
-          fxFlex="100%" (click)="openDailyDialog()">
-          Food Discount 10%
-        </button>
+      <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="row wrap">
+        <!-- color overlay -->
+        <span class="span-select">
+          Select Me! Cheat Day Coming
+        </span>
+        <img src="assets/images/salad.png" fxFlex="80%" style="border-radius: 5%;cursor: pointer;
+          filter:grayscale(100%);
+        " (click)="selectleft()">
       </div>
-      <div fxFlex="50%">        
-          <!-- Execise Discount 10% -->
-          <img src="assets/images/execise.png" fxFlex="80%" style="border-radius: 5%;">
+      <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="row wrap">
+        <span class="span-select">
+          Select Me! More Cheat Day
+        </span>
+        <!-- Execise Discount 10% -->
+        <img src="assets/images/fitness.png" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
+          (click)="selectright()">
       </div>
     </div>
   </div>
