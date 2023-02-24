@@ -1,23 +1,52 @@
-<div style="height: 100vh;">
-
+<div style="height: 100vh; overflow-y:hidden;">
+  <div fxFlex="100%" fxLayoutAlign="center start" fxLayoutAlign.xs="center center" fxLayout="row wrap"
+    fxLayoutGap="8px grid">
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      <img src="assets/images/Logo.png" fxFlex="20%" fxFlex.xs="80%">
+    </div>
+    <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="9px grid">
+      <div fxFlex="50%">
+        <button mat-button mat-raised-button class="primary" style="background-color: #FFC107; color: white;"
+          fxFlex="100%" (click)="openDailyDialog()">
+          Food Discount 10%
+        </button>
+      </div>
+      <div fxFlex="50%">        
+          <!-- Execise Discount 10% -->
+          <img src="assets/images/execise.png" fxFlex="80%" style="border-radius: 5%;">
+      </div>
+    </div>
+  </div>
 
 
 
   <!-- make 5 circle that the menu on the bottom of screen -->
   <!--  -->
   <div class="toolbarNav">
-    <div class="circle" style="background-color: #FFC107;">
+    <div class="circle" style="background-color: #FFC107;" routerLink="/profile">
+      <mat-icon>
+        person
+      </mat-icon>
+    </div>
+    <div class="circle" style="background-color: #FF5722;" routerLink="/storage">
+      <mat-icon>
+        storage
+      </mat-icon>
+    </div>
+    <div class="circle circle-active" style="background-color: #4CAF50;" routerLink="/">
       <mat-icon>
         home
       </mat-icon>
     </div>
-    <div class="circle" style="background-color: #FF5722;"></div>
-    <div class="circle circle-active" style="background-color: #4CAF50;">
+    <div class="circle" style="background-color: #2196F3;" routerLink="/map">
       <mat-icon>
-        home
+        pin_drop
       </mat-icon>
     </div>
-    <div class="circle" style="background-color: #2196F3;"></div>
-    <div class="circle" style="background-color: #9C27B0;"></div>
+    <div class="circle" style="background-color: #9C27B0;" routerLink="/history">
+      <mat-icon>
+        history
+      </mat-icon>
+    </div>
   </div>
 </div>

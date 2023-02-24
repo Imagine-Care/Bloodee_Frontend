@@ -1,1 +1,86 @@
-<p>profile works!</p>
+<div style="height: 100vh; overflow-y:hidden;">
+
+  <div fxFlex="100%" fxLayoutAlign="center center">
+    <div fxFlex="80%" fxFlex.xs="80%">
+      <mat-card>
+        <mat-card-content>
+          <div fxFlex="100%" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="8px grid">
+
+            <div fxFlex="30%" fxFlex.xs="50%">
+              <img src="assets/images/user_logo.png" style="width:100%;border-radius:50%" fxFlex="100%">
+            </div>
+            <!-- <div fxFlex="5%" fxFlex.xs="0%"></div> -->
+            <div fxFlex="40%" fxFlex.xs="100%" fxLayoutAlign="start center" fxLayoutAlign.xs="center center">
+              <p>
+                @{{user.name}}<br>
+                <span style="font-size: 12px; color: #9E9E9E;">{{user.level}}<br>
+                  {{user.badge}}</span>
+              </p>
+            </div>
+            <div fxFlex="30%" fxFlex="100%" fxLayoutAlign="start start">
+              <!-- save button  -->
+              <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
+                style="background-color: #ce6369; color: white;">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+              &nbsp;
+              <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
+                style="background-color: #ce6369; color: white;">
+                <mat-icon>edit</mat-icon>
+                Save
+              </button>
+            </div>
+            <div fxFlex="100%" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="8px grid">
+
+              <!-- mat input for prefix name surname -->
+              <mat-form-field fxFlex="15%" fxFlex.xs="100%" appearance="outline">
+                <input matInput placeholder="Prefix" [(ngModel)]="user.prefix" name="prefix">
+              </mat-form-field>
+              <mat-form-field fxFlex="25%" fxFlex.xs="100%" appearance="outline">
+                <input matInput placeholder="Name" [(ngModel)]="user.name" name="name">
+              </mat-form-field>
+              <mat-form-field fxFlex="25%" fxFlex.xs="100%" appearance="outline">
+                <input matInput placeholder="Surname" [(ngModel)]="user.surname" name="surname">
+              </mat-form-field>
+              <mat-form-field fxFlex="350%" fxFlex.xs="100%" appearance="outline">
+                <input matInput placeholder="Email" [(ngModel)]="user.email" name="email">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+  <!-- make 5 circle that the menu on the bottom of screen -->
+  <!--  -->
+  <div class="toolbarNav">
+    <div class="circle circle-active" style="background-color: #FFC107;" routerLink="/profile">
+      <mat-icon>
+        person
+      </mat-icon>
+    </div>
+    <div class="circle" style="background-color: #FF5722;" routerLink="/storage">
+      <mat-icon>
+        storage
+      </mat-icon>
+    </div>
+    <div class="circle" style="background-color: #4CAF50;" routerLink="/">
+      <mat-icon>
+        home
+      </mat-icon>
+    </div>
+    <div class="circle" style="background-color: #2196F3;" routerLink="/map">
+      <mat-icon>
+        pin_drop
+      </mat-icon>
+    </div>
+    <div class="circle" style="background-color: #9C27B0;" routerLink="/history">
+      <mat-icon>
+        history
+      </mat-icon>
+    </div>
+  </div>
+</div>

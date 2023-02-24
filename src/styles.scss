@@ -391,3 +391,69 @@ input[type="number"] {
 .font18 {
   font-size: 18pt;
 }
+
+
+.toolbarNav {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  display: inline-flex;
+  justify-content: center;
+  padding: 2em;
+  width: 100vw;
+
+  // make verticle align end
+  vertical-align: bottom;
+  flex-wrap:wrap-reverse;
+  // media screen mobile make justify-content
+  // center
+  @media (max-width: 768px) {
+    display:inline-block;
+    justify-content:space-between;
+  }
+}
+
+.circle {
+  width: 45px;
+  height: 45px;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  display: inline-block;
+  margin: 0 0.5em;
+  text-align: center;
+  line-height: 45px;
+  font-size: 1.5em;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #fff;
+    color: #fff;
+    // resize to bigger
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 2em;
+    // with animation
+    animation: circle-hover 0.3s ease;
+  }
+  // make text is verticle end
+  &::after {
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    height: 100%;
+  }
+}
+
+.circle-active {
+  // bigger size circle
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2em;
+  color: #fff;
+  background-color: #ccc;
+}
