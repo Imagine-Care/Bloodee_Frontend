@@ -11,7 +11,7 @@
           <h2 mat-dialog-title align="center">
             Login
           </h2>
-          <form class="login-main-form" name="form" (ngSubmit)="(f.form.valid)" #f="ngForm">
+          <form class="login-main-form" name="form" (ngSubmit)="(f.form.valid) && login() " #f="ngForm">
             <mat-dialog-content class="mat-typography">
               <mat-form-field appearance="outline">
                 <mat-label>Username</mat-label>

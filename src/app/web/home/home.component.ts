@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
@@ -9,10 +11,19 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private tokenService: TokenStorageService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
+    if(!!!this.tokenService.getToken()){
+      console.log("TOKEN EXIST");
+      this.router.navigate(
+        ['/login']
+      )
+    }
+
     // this.openDailyDialog();
   }
   selectright() {
@@ -30,22 +41,13 @@ export class HomeComponent implements OnInit {
   }
 
   openDailyDialog() {
-    const dialogRef = this.dialog.open(DialogDailyCouponComponent, {
-      width: '800px',
-    });
+    // const dialogRef = this.dialog.open(DialogDailyCouponComponent, {
+    //   width: '800px',
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
   }
-
-}
-
-@Component({
-  selector: 'dialog-daily-coupon',
-  templateUrl: 'dialog-daily-coupon.html',
-})
-export class DialogDailyCouponComponent {
-  constructor() { }
 
 }

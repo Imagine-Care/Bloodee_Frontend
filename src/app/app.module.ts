@@ -41,7 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './web/login/login.component';
 import { RegisterComponent } from './web/register/register.component';
 import { ForgotpassComponent } from './web/forgotpass/forgotpass.component';
-import { HomeComponent , DialogDailyCouponComponent} from './web/home/home.component';
+import { HomeComponent } from './web/home/home.component';
 import { ProfileComponent } from './web/profile/profile.component';
 import { HistoryComponent } from './web/history/history.component';
 import { StorageComponent } from './web/storage/storage.component';
@@ -57,7 +57,7 @@ import { QrComponent } from './web/qr/qr.component';
     HomeComponent,
     ProfileComponent,
     HistoryComponent,
-    DialogDailyCouponComponent,
+
     StorageComponent,
     MapComponent,
     EmergencyComponent,

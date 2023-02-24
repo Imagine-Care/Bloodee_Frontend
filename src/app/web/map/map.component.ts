@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-map',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.tokenService.redirectlogin();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-emergency',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmergencyComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tokenService: TokenStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.tokenService.redirectlogin();
   }
 
 }

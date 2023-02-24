@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,12 +20,17 @@ export class ProfileComponent implements OnInit {
     email: "John.doe"
   }
   edit = true;
-  constructor() { }
+  constructor(
+    private tokenService: TokenStorageService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.tokenService.redirectlogin();
   }
   logout() {
-    console.log("Logout")
+    this.tokenService.signOut();
+    this.router.navigate(['login'])
   }
   editchange() {
     this.edit = !this.edit;

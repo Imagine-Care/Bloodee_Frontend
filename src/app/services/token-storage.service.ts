@@ -52,4 +52,11 @@ export class TokenStorageService {
 
     return {};
   }
+
+  public redirectlogin():void {
+    var token = window.localStorage.getItem(TOKEN_KEY);
+    if(!!!token){
+      this.route.navigate(["login"])
+    }
+  }
 }

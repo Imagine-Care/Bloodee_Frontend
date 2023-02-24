@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-storage',
@@ -12,11 +13,13 @@ export class StorageComponent implements OnInit {
     name: "Coupon 1",
     descrition: "Lorem ",
   },
-
   ]
-  constructor() { }
+  constructor(
+    private tokenService:TokenStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.tokenService.redirectlogin();
   }
 
 }
