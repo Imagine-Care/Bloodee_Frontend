@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Redeem Now</h2>
+<mat-dialog-content class="mat-typography">
+  <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="9px grid" style="height: 39vw;">
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      <img src="assets/images/{{coupon_data.img}}" fxFlex="80%">
+    </div>
+    <div fxFlex="60%">
+      <h2>
+        {{coupon_data.name}}
+      </h2>
+      <h3>
+        Discount : {{coupon_data.discount}}
+      </h3>
+      <p>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis saepe repudiandae eveniet nobis, praesentium ipsam qui ut iste rem vitae beatae veniam velit repellendus quod nulla placeat, modi, dicta est!
+      </p>
+    </div>
+    <div fxFlex="40%">
+      <img src="./assets/images/qrcode.png" fxFlex="100%">
+    </div>
+  </div>
+</mat-dialog-content>

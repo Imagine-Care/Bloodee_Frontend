@@ -41,13 +41,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './web/login/login.component';
 import { RegisterComponent } from './web/register/register.component';
 import { ForgotpassComponent } from './web/forgotpass/forgotpass.component';
-import { HomeComponent } from './web/home/home.component';
+import { DialogQRCodeComponent, HomeComponent } from './web/home/home.component';
 import { ProfileComponent } from './web/profile/profile.component';
 import { HistoryComponent } from './web/history/history.component';
 import { StorageComponent } from './web/storage/storage.component';
 import { MapComponent } from './web/map/map.component';
 import { EmergencyComponent } from './web/emergency/emergency.component';
 import { QrComponent } from './web/qr/qr.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,7 @@ import { QrComponent } from './web/qr/qr.component';
     HomeComponent,
     ProfileComponent,
     HistoryComponent,
-
+    DialogQRCodeComponent,
     StorageComponent,
     MapComponent,
     EmergencyComponent,
@@ -101,7 +102,9 @@ import { QrComponent } from './web/qr/qr.component';
     MatTabsModule,
     MatProgressBarModule,
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

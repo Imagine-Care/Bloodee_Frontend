@@ -15,18 +15,29 @@ export class MainService {
 
   constructor(private http: HttpClient) { }
 
-  getallstudentsortbyclassroom(
-    student_level: any,
-    student_classroom: any
-  ): Observable<any> {
-    return this.http.post(
-      API_URL + 'user/student/get/sortbyclassandroom',
-      {
-        student_level,
-        student_classroom,
-      },
-      httpOptions
-    );
+  getTodayData(): Observable<any> {
+    return this.http.get(API_URL + 'get/today', httpOptions);
   }
 
+  getCheat(id: string): Observable<any> {
+    return this.http.get(API_URL + 'get/cheat/' + id, httpOptions);
+  }
+  getFood(
+    id: string,
+  ): Observable<any> {
+    return this.http.get(API_URL + 'get/food/' + id, httpOptions);
+  }
+
+  updateDailySelect(daily_select: number, daily_cheat: number, daily_food: number): Observable<any> {
+    return this.http.post(API_URL + 'update/daily', {
+      daily_select,
+      daily_cheat,
+      daily_food
+    }, httpOptions);
+
+  }
+
+  getDailyCoupon(): Observable<any> {
+    return this.http.get(API_URL + 'get/daily_coupon', httpOptions);
+  }
 }

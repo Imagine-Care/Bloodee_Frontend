@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -9,45 +10,116 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  cheat_data = {};
+  food_data = {};
+  img = {
+    'left': '',
+    'right': ''
+  }
+  cheat_id = 0;
+  food_id = 0;
+  daily_select = 0;
   constructor(
     private dialog: MatDialog,
     private tokenService: TokenStorageService,
-    private router : Router
+    private router: Router,
+    private mainService: MainService
   ) { }
 
   ngOnInit(): void {
-    if(!!!this.tokenService.getToken()){
-      console.log("TOKEN EXIST");
-      this.router.navigate(
-        ['/login']
-      )
-    }
-
+    this.tokenService.redirectlogin();
+    this.callData();
     // this.openDailyDialog();
   }
-  selectright() {
-    console.log("SELECT EXECISE");
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-    }).then(()=>{
-      console.log("SELECTED");
+
+  callData() {
+    this.mainService.getTodayData().subscribe((data) => {
+      console.log(data);
+      this.daily_select = data.user.daily_select;
+      this.cheat_id = data.user.daily_cheat;
+      this.food_id = data.user.daily_food;
+      this.mainService.getCheat(data.user.daily_cheat).subscribe((cheat_data) => {
+        this.cheat_data = cheat_data;
+        console.log(cheat_data);
+        this.img.left = cheat_data.cheat.coupon_img
+      })
+      this.mainService.getFood(data.user.daily_food).subscribe((food_data) => {
+        this.food_data = food_data;
+        this.img.right = food_data.food.coupon_img
+        console.log(food_data);
+      })
     })
   }
+
+  selectright() {
+    if (this.daily_select != 2) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+      }).then(() => {
+        // daily select = 2
+        this.mainService.updateDailySelect(2, this.cheat_id, this.food_id).subscribe((data) => { console.log(data) })
+        this.daily_select = 2;
+        this.openQRDialog();
+      })
+    } else {
+      this.openQRDialog();
+    }
+  }
   selectleft() {
-    console.log("SELECT FOOD");
+    if (this.daily_select != 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+      }).then(() => {
+        // daily select = 1
+        this.mainService.updateDailySelect(1, this.cheat_id, this.food_id).subscribe((data) => { console.log(data) })
+        this.daily_select = 1;
+        this.openQRDialog();
+      })
+    } else {
+      this.openQRDialog();
+    }
   }
 
-  openDailyDialog() {
-    // const dialogRef = this.dialog.open(DialogDailyCouponComponent, {
-    //   width: '800px',
-    // });
+  openQRDialog() {
+    const dialogRef = this.dialog.open(DialogQRCodeComponent, {
+      width: '800px',
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-qrcode',
+  templateUrl: './dialog-qrcode.html',
+})
+
+export class DialogQRCodeComponent implements OnInit {
+  constructor(private mainService: MainService) { }
+  coupon_data = {
+    name: '',
+    discount : '',
+    img: '',
+  }
+  ngOnInit(): void {
+    this.callData();
+  }
+
+  callData() {
+    this.mainService.getDailyCoupon().subscribe((data) => {
+      console.log(data);
+      this.coupon_data.name = data.coupon.name;
+      this.coupon_data.discount = data.coupon.discount;
+      this.coupon_data.img = data.coupon.coupon_img;
+
+    })
   }
 
 }

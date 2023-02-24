@@ -9,13 +9,12 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class StorageComponent implements OnInit {
   coupons: any = [{
     id: 1,
-    discount : "50 Baht",
+    discount: "50 Baht",
     name: "Coupon 1",
     descrition: "Lorem ",
-  },
-  ]
+  },]
   constructor(
-    private tokenService:TokenStorageService
+    private tokenService: TokenStorageService
   ) { }
 
   ngOnInit(): void {
