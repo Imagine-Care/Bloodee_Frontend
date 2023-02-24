@@ -1,50 +1,53 @@
 <div style="height: 100vh; overflow-y:hidden;">
 
   <div fxFlex="100%" fxLayoutAlign="center center">
-    <div fxFlex="80%" fxFlex.xs="80%">
+    <div fxFlex="60%" fxFlex.xs="80%">
       <mat-card>
         <mat-card-content>
           <div fxFlex="100%" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="8px grid">
 
-            <div fxFlex="25%" fxFlex.xs="50%">
-              <img src="assets/images/user_logo.png" style="width:100%;border-radius:50%" fxFlex="100%">
+            <div fxFlex="30%" fxFlex.xs="100%" fxLayout="row wrap" fxLayoutGap="8px grid" fxLayoutAlign="center center">
+
+              <div fxFlex="40%" fxFlex.xs="100%">
+                <img src="assets/images/user_logo.png" style="width:100%;border-radius:50%" fxFlex="100%">
+              </div>
+              <!-- <div fxFlex="5%" fxFlex.xs="0%"></div> -->
+              <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="start center" fxLayoutAlign.xs="center center">
+                <h1>
+                  @{{user.name}}<br>
+                  <span style="font-size: 0.75em; color: #9E9E9E;">{{user.level}}<br>
+                    {{user.badge}}</span>
+                </h1>
+              </div>
             </div>
-            <!-- <div fxFlex="5%" fxFlex.xs="0%"></div> -->
-            <div fxFlex="40%" fxFlex.xs="100%" fxLayoutAlign="start center" fxLayoutAlign.xs="center center">
-              <h1>
-                @{{user.name}}<br>
-                <span style="font-size: 0.75em; color: #9E9E9E;">{{user.level}}<br>
-                  {{user.badge}}</span>
-              </h1>
-            </div>
-            <div fxFlex="30%" fxFlex="100%" fxLayoutAlign="start start">
-              <!-- save button  -->
-              <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
-                style="background-color: #ce6369; color: white;">
-                <mat-icon>exit_to_app</mat-icon>
-                Logout
-              </button>
-              &nbsp;
-              <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
-                style="background-color: #ce6369; color: white;">
-                <mat-icon>edit</mat-icon>
-                Save
-              </button>
-            </div>
-            <div fxFlex="100%" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="8px grid">
+            <div fxFlex="70%" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="8px grid">
+              <div fxFlex="100%" fxFlex.xs="100%" fxLayoutAlign="start start">
+                <!-- save button  -->
+                <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
+                  style="background-color: #ce6369; color: white;">
+                  <mat-icon>exit_to_app</mat-icon>
+                  Logout
+                </button>
+                &nbsp;
+                <button mat-button mat-raised-button class="primary" fxFlex="100%" fxFlex.xs="50%"
+                  style="background-color: #ce6369; color: white;" (click)="editchange()">
+                  <mat-icon>{{edit ? 'edit':'save' }}</mat-icon>
+                  {{edit ? 'Edit' : 'Save'}}
+                </button>
+              </div>
 
               <!-- mat input for prefix name surname -->
               <mat-form-field fxFlex="15%" fxFlex.xs="100%" appearance="outline">
-                <input matInput placeholder="Prefix" [(ngModel)]="user.prefix" name="prefix">
+                <input matInput placeholder="Prefix" [(ngModel)]="form.prefix" name="prefix" [disabled]="edit">
               </mat-form-field>
               <mat-form-field fxFlex="25%" fxFlex.xs="100%" appearance="outline">
-                <input matInput placeholder="Name" [(ngModel)]="user.name" name="name">
+                <input matInput placeholder="Name" [(ngModel)]="form.name" name="name" [disabled]="edit">
               </mat-form-field>
               <mat-form-field fxFlex="25%" fxFlex.xs="100%" appearance="outline">
-                <input matInput placeholder="Surname" [(ngModel)]="user.surname" name="surname">
+                <input matInput placeholder="Surname" [(ngModel)]="form.surname" name="surname" [disabled]="edit">
               </mat-form-field>
               <mat-form-field fxFlex="35%" fxFlex.xs="100%" appearance="outline">
-                <input matInput placeholder="Email" [(ngModel)]="user.email" name="email">
+                <input matInput placeholder="Email" [(ngModel)]="form.email" name="email" [disabled]="edit">
               </mat-form-field>
             </div>
           </div>

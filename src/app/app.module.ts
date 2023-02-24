@@ -47,6 +47,7 @@ import { HistoryComponent } from './web/history/history.component';
 import { StorageComponent } from './web/storage/storage.component';
 import { MapComponent } from './web/map/map.component';
 import { EmergencyComponent } from './web/emergency/emergency.component';
+import { QrComponent } from './web/qr/qr.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { EmergencyComponent } from './web/emergency/emergency.component';
     DialogDailyCouponComponent,
     StorageComponent,
     MapComponent,
-    EmergencyComponent
+    EmergencyComponent,
+    QrComponent
   ],
   imports: [
     NgxMaskModule.forRoot(),

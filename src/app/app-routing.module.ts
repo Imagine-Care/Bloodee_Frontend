@@ -8,6 +8,7 @@ import { StorageComponent } from './web/storage/storage.component';
 import { HistoryComponent } from './web/history/history.component';
 import { ProfileComponent } from './web/profile/profile.component';
 import { MapComponent } from './web/map/map.component';
+import { QrComponent } from './web/qr/qr.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'map', component: MapComponent },
+  { path: 'qr', component: QrComponent },
   { path: '**', redirectTo: '' }
 ];
 

@@ -11,11 +11,21 @@ export class ProfileComponent implements OnInit {
     badge: "Temp",
     level: "Novice"
   }
+  form: any = {
+    prefix: "",
+    name: "John",
+    surname: "Doe",
+    email: "John.doe"
+  }
+  edit = true;
   constructor() { }
 
   ngOnInit(): void {
   }
   logout() {
     console.log("Logout")
+  }
+  editchange() {
+    this.edit = !this.edit;
   }
 }
