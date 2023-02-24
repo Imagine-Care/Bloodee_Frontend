@@ -40,4 +40,22 @@ export class MainService {
   getDailyCoupon(): Observable<any> {
     return this.http.get(API_URL + 'get/daily_coupon', httpOptions);
   }
+
+  updateUser(
+    email: string,
+    prefix: string,
+    firstname: string,
+    surname: string,
+  ): Observable<any> {
+    return this.http.post(API_URL + 'update/user', {
+      email,
+      prefix,
+      firstname,
+      surname
+    }, httpOptions);
+  }
+
+  getUser():Observable<any> {
+    return this.http.get(API_URL + 'get/user', httpOptions);
+  }
 }
