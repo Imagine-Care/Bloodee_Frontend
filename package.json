@@ -1,6 +1,6 @@
 {
-  "name": "BloodeeV2",
-  "version": "0.0.0",
+  "name": "bloodee",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
