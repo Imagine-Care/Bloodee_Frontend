@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
 //Test Server
-const AUTH_API = "http://localhost:8080/api/auth/";
+// const AUTH_API = "http://localhost:8080/api/auth/";
+
+//Production Server
+const AUTH_API = "https://bloodee-backend.azurewebsites.net/api/auth/";  
 
 //httpOptions
 const httpOptions = {
