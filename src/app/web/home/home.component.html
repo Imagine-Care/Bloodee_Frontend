@@ -10,21 +10,27 @@
         <img src="assets/images/Logo.png" fxFlex="100%">
       </div>
       <div fxFlex="40%" fxFlex.xs="20%" fxLayoutAlign="center start">
-        <img src="assets/images/bigcheat.png" fxFlex="30%" fxFlex.xs="100%">
+        <div fxFlex="30%" fxFlex.xs="100%" fxLayout="row wrap" fxLayoutGap="8px grid" fxLayoutAlign="center center">
+          <img src="assets/images/bigcheat.png" fxFlex="100%">
+          <h2 class="span-select" fxFlex="100%" fxLayoutAlign="center center">
+            {{day_to_donation > 0 ? "Only "+day_to_donation + " Days More": "Ready to Get Surprised"}}
+          </h2>
+        </div>
+
       </div>
     </div>
     <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="9px grid">
       <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="row wrap">
         <!-- color overlay -->
         <span class="span-select">
-          Select Me! Cheat Day Coming
+          Select Me! Cheat Meal
         </span>
         <img src="assets/images/{{img.left}}" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
           [class.grayscale]="daily_select == 2" (click)="selectleft()">
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="row wrap">
         <span class="span-select">
-          Select Me! More Cheat Day
+          Select Me! Better Promotion For Cheat Meal
         </span>
         <!-- Execise Discount 10% -->
         <!-- class grayscale if condition -->
@@ -45,7 +51,7 @@
         person
       </mat-icon>
     </div>
-    <div class="circle" style="background-color: #FF5722;" routerLink="/storage">
+    <div class="circle" style="background-color: #FF5722;" routerLink="/">
       <mat-icon>
         storage
       </mat-icon>
@@ -55,12 +61,12 @@
         home
       </mat-icon>
     </div>
-    <div class="circle" style="background-color: #2196F3;" routerLink="/map">
+    <div class="circle" style="background-color: #2196F3;" routerLink="/">
       <mat-icon>
         pin_drop
       </mat-icon>
     </div>
-    <div class="circle" style="background-color: #9C27B0;" routerLink="/history">
+    <div class="circle" style="background-color: #9C27B0;" routerLink="/">
       <mat-icon>
         history
       </mat-icon>
