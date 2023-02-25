@@ -7,7 +7,8 @@ import { TokenStorageService } from './token-storage.service';
 // const AUTH_API = "http://localhost:8080/api/auth/";
 
 //Production Server
-const AUTH_API = "https://bloodee-backend.azurewebsites.net/api/auth/";  
+// const AUTH_API = "https://bloodee-backend.azurewebsites.net/api/auth/"; 
+const AUTH_API = "https://backend.bloodee.imgc.piriyapol.me/api/auth/"; 
 
 //httpOptions
 const httpOptions = {
