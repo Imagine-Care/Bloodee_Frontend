@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/';
+//Test Server
+// const API_URL = 'http://localhost:8080/api/';
+
+//Production Server
+const API_URL = 'https://bloodee-backend.azurewebsites.net/api/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
