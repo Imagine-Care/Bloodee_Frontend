@@ -25,7 +25,7 @@
         <span class="span-select">
           Select Me! Cheat Meal
         </span>
-        <img src="assets/images/{{img.left}}" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
+        <img [src]="img.left" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
           [class.grayscale]="daily_select == 2" (click)="selectleft()">
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="row wrap">
@@ -35,7 +35,7 @@
         <!-- Execise Discount 10% -->
         <!-- class grayscale if condition -->
 
-        <img src="assets/images/{{img.right}}" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
+        <img [src]="img.right" fxFlex="80%" style="border-radius: 5%;cursor: pointer;"
           [class.grayscale]="daily_select == 1" (click)="selectright()">
       </div>
     </div>

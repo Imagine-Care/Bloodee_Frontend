@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
 
   callData() {
     this.mainService.getTodayData().subscribe((data) => {
-      console.log(data);
       var last_donation = data.user.last_donation;
 
       var today = new Date();
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit {
 
       this.day_to_donation = (30 + cheat_days_count) - diffDays;
 
-      console.log(this.day_to_donation)
 
 
       this.daily_select = data.user.daily_select;
@@ -54,11 +52,11 @@ export class HomeComponent implements OnInit {
       this.food_id = data.user.daily_food;
       this.mainService.getCheat(data.user.daily_cheat).subscribe((cheat_data) => {
         this.cheat_data = cheat_data;
-        this.img.left = cheat_data.cheat.coupon_img
+        this.img.left = "https://backend.bloodee.imgc.piriyapol.me/public/upload/"+cheat_data.cheat.coupon_img
       })
       this.mainService.getFood(data.user.daily_food).subscribe((food_data) => {
         this.food_data = food_data;
-        this.img.right = food_data.food.coupon_img
+        this.img.right ="https://backend.bloodee.imgc.piriyapol.me/public/upload/"+ food_data.food.coupon_img
       })
     })
   }
