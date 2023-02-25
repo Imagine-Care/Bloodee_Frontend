@@ -8,6 +8,16 @@
   }
 }
 
+.span-select {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  // on mobile smaller size
+  @media (max-width: 767px) {
+    font-size: 1em;
+    line-height: 1em;
+  }
+}
+
 .grayscale {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);

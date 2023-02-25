@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   cheat_id = 0;
   food_id = 0;
   daily_select = 0;
+  day_to_donation = 0;
   constructor(
     private dialog: MatDialog,
     private tokenService: TokenStorageService,
@@ -35,18 +36,29 @@ export class HomeComponent implements OnInit {
   callData() {
     this.mainService.getTodayData().subscribe((data) => {
       console.log(data);
+      var last_donation = data.user.last_donation;
+
+      var today = new Date();
+      var last_donation_date = new Date(last_donation);
+      var diff = today.getTime() - last_donation_date.getTime();
+      var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+      var cheat_days_count = data.user.cheat_day_quota
+
+      this.day_to_donation = (30 + cheat_days_count) - diffDays;
+
+      console.log(this.day_to_donation)
+
+
       this.daily_select = data.user.daily_select;
       this.cheat_id = data.user.daily_cheat;
       this.food_id = data.user.daily_food;
       this.mainService.getCheat(data.user.daily_cheat).subscribe((cheat_data) => {
         this.cheat_data = cheat_data;
-        console.log(cheat_data);
         this.img.left = cheat_data.cheat.coupon_img
       })
       this.mainService.getFood(data.user.daily_food).subscribe((food_data) => {
         this.food_data = food_data;
         this.img.right = food_data.food.coupon_img
-        console.log(food_data);
       })
     })
   }
@@ -57,11 +69,14 @@ export class HomeComponent implements OnInit {
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
-      }).then(() => {
-        // daily select = 2
-        this.mainService.updateDailySelect(2, this.cheat_id, this.food_id).subscribe((data) => { console.log(data) })
-        this.daily_select = 2;
-        this.openQRDialog();
+        showCancelButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // daily select = 2
+          this.mainService.updateDailySelect(2, this.cheat_id, this.food_id).subscribe((data) => { })
+          this.daily_select = 2;
+          this.openQRDialog();
+        }
       })
     } else {
       this.openQRDialog();
@@ -73,11 +88,14 @@ export class HomeComponent implements OnInit {
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
-      }).then(() => {
-        // daily select = 1
-        this.mainService.updateDailySelect(1, this.cheat_id, this.food_id).subscribe((data) => { console.log(data) })
-        this.daily_select = 1;
-        this.openQRDialog();
+        showCancelButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // daily select = 1
+          this.mainService.updateDailySelect(1, this.cheat_id, this.food_id).subscribe((data) => { })
+          this.daily_select = 1;
+          this.openQRDialog();
+        }
       })
     } else {
       this.openQRDialog();
@@ -90,7 +108,6 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
@@ -105,7 +122,7 @@ export class DialogQRCodeComponent implements OnInit {
   constructor(private mainService: MainService) { }
   coupon_data = {
     name: '',
-    discount : '',
+    discount: '',
     img: '',
   }
   ngOnInit(): void {
@@ -114,7 +131,6 @@ export class DialogQRCodeComponent implements OnInit {
 
   callData() {
     this.mainService.getDailyCoupon().subscribe((data) => {
-      console.log(data);
       this.coupon_data.name = data.coupon.name;
       this.coupon_data.discount = data.coupon.discount;
       this.coupon_data.img = data.coupon.coupon_img;
