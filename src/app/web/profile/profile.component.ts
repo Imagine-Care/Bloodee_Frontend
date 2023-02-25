@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit {
   }
   callData(){
     this.mainService.getUser().subscribe((data)=>{
-      console.log(data);
       this.form.prefix = data.user.prefix;
       this.form.name = data.user.firstname;
       this.form.surname = data.user.surname;
@@ -56,7 +55,6 @@ export class ProfileComponent implements OnInit {
         this.form.name,
         this.form.surname
       ).subscribe((data) => {
-        console.log(data)
         this.edit = true;
       })
     } else {
