@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 // const API_URL = 'http://localhost:8080/api/';
 
 //Production Server
-const API_URL = 'https://bloodee-backend.azurewebsites.net/api/';
+// const API_URL = 'https://bloodee-backend.azurewebsites.net/api/';
+const API_URL = 'https://backend.bloodee.imgc.piriyapol.me/api/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
